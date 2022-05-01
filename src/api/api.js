@@ -1,3 +1,4 @@
+import { notify } from "../middlewares/notify.js"
 import { clearUserData, getUserData, setUserData } from "./util.js"
 
 const host = 'https://parseapi.back4app.com'
@@ -13,7 +14,8 @@ async function request(url, options) {
         }
         return res.json()
     } catch (err) {
-        alert(err.message)//това е свойството на грешката, което идва от try/catch конструкцията!
+        //alert(err.message)//това е свойството на грешката, което идва от try/catch конструкцията!
+        notify(err.message)
         throw err
     }
 }

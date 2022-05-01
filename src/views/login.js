@@ -45,7 +45,6 @@ export function loginView(ctx) {
  
   async function onLogin(e) {
     e.preventDefault();
-    e.target.querySelector('input').disabled = !(e.target.querySelector('input').disabled)
     const formData = new FormData(e.target);
     const username = formData.get("username").trim();
     const password = formData.get("password").trim();
@@ -63,6 +62,7 @@ export function loginView(ctx) {
     ctx.updateNav();
     ctx.page.redirect("/");
    } catch (err) {
+     console.log(username);
        update(err, {username})
    }
   }
