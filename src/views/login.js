@@ -45,6 +45,7 @@ export function loginView(ctx) {
  
   async function onLogin(e) {
     e.preventDefault();
+    e.target.querySelector('input').disabled = !(e.target.querySelector('input').disabled)
     const formData = new FormData(e.target);
     const username = formData.get("username").trim();
     const password = formData.get("password").trim();
