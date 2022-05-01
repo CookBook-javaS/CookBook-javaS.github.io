@@ -8,6 +8,7 @@ import { loginView } from './views/login.js'
 updateNav()
 
 page(decorateCtx)
+page.redirect('/index.html', '/')
 page('/', homeView)
 page('/login', loginView)
 page.start()
