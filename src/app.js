@@ -4,6 +4,7 @@ import { page } from './lib.js'
 import { decorateCtx, updateNav } from './middlewares/middlewares.js'
 import { homeView } from './views/home.js'
 import { loginView } from './views/login.js'
+import { registerView } from './views/register.js'
 
 updateNav()
 
@@ -11,6 +12,7 @@ page(decorateCtx)
 page.redirect('/index.html', '/')
 page('/', homeView)
 page('/login', loginView)
+page('/register', registerView)
 page.start()
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {

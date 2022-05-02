@@ -9,8 +9,11 @@ async function request(url, options) {
 
         if (!res.ok) {
             const problem = await res.json()
-            throw new Error(problem.error)
             //.error = Така се казва свойството за message на грешка в response на back4app!
+            throw { 
+                message: problem.error, 
+                code: problem.code
+            }
         }
         return res.json()
     } catch (err) {
@@ -66,7 +69,7 @@ export async function login(username, password) {
 
     setUserData(userData)
 }
-export async function register(username, email,  password) {
+export async function register(username, email, password) {
     const result = await post('/users', {username, email, password})
 
     const userData = {

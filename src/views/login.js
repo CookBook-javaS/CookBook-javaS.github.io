@@ -56,13 +56,12 @@ export function loginView(ctx) {
           password: password == '' ? true : false
       };
     }
-
+    
     e.target.reset();
     await login(username, password);
     ctx.updateNav();
     ctx.page.redirect("/");
    } catch (err) {
-     console.log(username);
        update(err, {username})
    }
   }
