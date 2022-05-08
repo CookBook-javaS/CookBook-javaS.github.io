@@ -1,4 +1,4 @@
-import { getRecipes } from "../api/recipes.js";
+import { getRecentRecipes } from "../api/recipes.js";
 import { html, until } from "../lib.js";
 import { spinner } from "./common.js";
 
@@ -29,7 +29,7 @@ export function homeView(ctx) {
     ctx.render(template(loadRecipes()))
 }
 async function loadRecipes() {
-    const recipes = (await getRecipes()).results
+    const recipes = (await getRecentRecipes()).results
     if (recipes.length == 0) {
         return html`<p>No recipes found. Be the first to make one! </p>`
     }else {

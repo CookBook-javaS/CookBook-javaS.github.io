@@ -17,8 +17,20 @@ export async function updateRecipe(id, recipe) {
 export async function deleteRecipe(id) {
   return api.del(endpoints.recipeById + id);
 }
-export async function getRecipes() {
-    return api.get(endpoints.recipes);
+export async function getRecipes(page = 1, queryString = '') {
+  if (queryString) {
+    queryString = {
+      name: {
+        $text: {
+          $search: {
+             $term: queryString,
+             $caseSensitive: false
+          }
+        }
+      }
+    }
+  }
+  return api.get(endpoints.recipes(page, queryString));
     //никъде не казваме await за да не развалим "опаковката"- промиса, ще кажем await като викнем getRecipes(),
     //за да може като има грешка да излезне не някъде посредата на пътя(ако има някъде await)
     //ами на нивото на което ние работим(а не някъде в някой от файловете api.js или data.js ами в някой
@@ -26,4 +38,7 @@ export async function getRecipes() {
   
     //казваме обаче че е async функция, за да знаем че тя пренася промис и тя попринцип ще върне промис
     // и така ще продължи веригата от връщане на пормиси започната от api.js през data.js до някое от viewtata.
+}
+export async function getRecentRecipes() {
+  return api.get(endpoints.recent);
 }

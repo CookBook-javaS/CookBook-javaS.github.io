@@ -1,7 +1,8 @@
 import * as api from "./api.js";
 
 export const endpoints = {
-  recipes: "/classes/Recipe",
+  recent: "/classes/Recipe?limit=3",
+  recipes: (page = 1, queryObj = '') => `/classes/Recipe${queryObj ? `?where=${createQuery(queryObj)}` : ''}`,//за сърч и пагинейшън е пригодено така
   comments: "/classes/Comments",
   recipeById: "/classes/Recipe/",
   recipeDetails: (id) => `/classes/Recipe/${id}?include=owner`,
