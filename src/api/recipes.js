@@ -5,7 +5,7 @@ import { getUserData } from "./util.js";
 export async function createRecipe(recipe) {
   if (getUserData()) {
     recipe.owner = createPointer("_User", getUserData().id);
-    return api.post(endpoints.recipes, recipe);
+    return api.post(endpoints.recipes(), recipe);
   }
 }
 export async function getRecipeById(id) {

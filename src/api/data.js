@@ -1,8 +1,10 @@
 import * as api from "./api.js";
 
+const pageSize = 5
+
 export const endpoints = {
-  recent: "/classes/Recipe?limit=3",
-  recipes: (page = 1, queryObj = '') => `/classes/Recipe${queryObj ? `?where=${createQuery(queryObj)}` : ''}`,//за сърч и пагинейшън е пригодено така
+  recent: "/classes/Recipe?limit=3&order=-createdAt",
+  recipes: (page = 1, queryObj = '') => `/classes/Recipe?order=-createdAt&skip=${(page - 1) * pageSize}&limit=${pageSize}${queryObj ? `&where=${createQuery(queryObj)}` : ''}`,//за сърч и пагинейшън е пригодено така
   comments: "/classes/Comments",
   recipeById: "/classes/Recipe/",
   recipeDetails: (id) => `/classes/Recipe/${id}?include=owner`,

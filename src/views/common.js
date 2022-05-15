@@ -9,4 +9,11 @@ export const field = (label, name, type, value = '', placeholder = '', hasError)
         return html`<label>${label}: <input class=${classMap({error: hasError})} type=${type} name=${name} .value=${value}></label>`
     }
 }
+
+export const errorMsg = (err) => {
+    if (err) {
+        return html`<p class="error">${err.message}</p>`
+    }
+    return null
+}
   

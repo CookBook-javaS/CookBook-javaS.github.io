@@ -6,7 +6,7 @@ import { catalogView } from './views/catalog.js'
 import { homeView } from './views/home.js'
 import { loginView } from './views/login.js'
 import { registerView } from './views/register.js'
-import * as a from './api/recipes.js'
+import { createView } from './views/create.js'
 
 updateNav()
 
@@ -16,6 +16,7 @@ page('/', homeView)
 page('/login', loginView)
 page('/register', registerView)
 page('/catalog', catalogView)
+page('/create', createView)
 page.start()
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
@@ -24,5 +25,3 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
     updateNav()
     page.redirect('/')   
 })
-
-window.a = a

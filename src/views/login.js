@@ -1,13 +1,14 @@
 import { login } from "../api/api.js";
 import { html } from "../lib.js";
-import { field } from "./common.js";
+import { errorMsg, field } from "./common.js";
+
 
 const template = (onSubmit, err, data) => html`
   <section id="login">
     <article>
       <h2>Login</h2>
       <form @submit=${onSubmit} id="loginForm">
-        ${err ? html`<p class="error">${err.message}</p>` : null}
+      ${errorMsg(err)}
         ${field(
           "Username",
           "username",
