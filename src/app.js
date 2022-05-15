@@ -7,6 +7,7 @@ import { homeView } from './views/home.js'
 import { loginView } from './views/login.js'
 import { registerView } from './views/register.js'
 import { createView } from './views/create.js'
+import { detailsView } from './views/details.js'
 
 updateNav()
 
@@ -17,6 +18,7 @@ page('/login', loginView)
 page('/register', registerView)
 page('/catalog', catalogView)
 page('/create', createView)
+page('/details/:id', detailsView)
 page.start()
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
