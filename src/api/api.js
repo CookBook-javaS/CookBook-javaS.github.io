@@ -1,3 +1,4 @@
+import { page } from "../lib.js"
 import { notify } from "../middlewares/notify.js"
 import { clearUserData, getUserData, setUserData } from "./util.js"
 
@@ -18,6 +19,9 @@ async function request(url, options) {
         return res.json()
     } catch (err) {
         //alert(err.message)//това е свойството на грешката, което идва от try/catch конструкцията!
+        if (err.code == 101) {// === ако се изисква да е логнат да не блокира страницата а да го прати до login!
+            page.redirect('/login')
+        }
         notify(err.message)
         throw err
     }

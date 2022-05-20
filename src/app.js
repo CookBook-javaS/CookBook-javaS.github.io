@@ -8,6 +8,7 @@ import { loginView } from './views/login.js'
 import { registerView } from './views/register.js'
 import { createView } from './views/create.js'
 import { detailsView } from './views/details.js'
+import { editView } from './views/edit.js'
 
 updateNav()
 
@@ -19,6 +20,7 @@ page('/register', registerView)
 page('/catalog', catalogView)
 page('/create', createView)
 page('/details/:id', detailsView)
+page('/edit/:id', editView)
 page.start()
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {

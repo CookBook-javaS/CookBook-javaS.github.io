@@ -13,12 +13,10 @@
     border-radius: 16px;
 }
 
-.comment {
-    background-color: white;
-}
-
 .comment p {
     padding: 16px;
+    background-color: white;
+
 }
 
 .comment header {
@@ -41,4 +39,8 @@
     background-color: #6c8b47;
     color: white;
     cursor: pointer;
+}
+
+.comment-date {
+    float: right;
 }
